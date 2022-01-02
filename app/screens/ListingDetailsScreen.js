@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Image, StyleSheet } from "react-native";
+import { View, StyleSheet, Image } from "react-native";
 
 import colors from "../config/colors";
 import ListItem from "../components/lists/ListItem";
@@ -49,3 +49,11 @@ const styles = StyleSheet.create({
 });
 
 export default ListingDetailsScreen;
+
+// Caching new one doesnt work
+// import { Image } from "react-native-expo-image-cache";
+// <Image
+//       style={styles.image}
+//       preview={{ uri: thumbnailUrl }}
+//       uri={listing.images[0].url}
+//     />

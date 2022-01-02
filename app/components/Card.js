@@ -5,7 +5,7 @@ import Text from "./Text";
 import colors from "../config/colors";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
-function Card({ title, subTitle, imageUrl, onPress }) {
+function Card({ title, subTitle, imageUrl, onPress, thumbnailUrl }) {
   return (
     <TouchableWithoutFeedback onPress={onPress}>
       <View style={styles.card}>
@@ -47,3 +47,15 @@ const styles = StyleSheet.create({
 });
 
 export default Card;
+
+// Caching shit
+// import { Image } from "react-native-expo-image-cache";
+// Caching seems to throw some error with this library. Works fine with rn Image
+{
+  /* <Image
+style={styles.image}
+tint={"light"}
+preview={{ uri: thumbnailUrl }}
+uri={imageUrl}
+/> */
+}

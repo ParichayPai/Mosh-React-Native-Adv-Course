@@ -1,47 +1,16 @@
 import React from "react";
-import { Button, Text } from "react-native";
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
 // import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createStackNavigator } from "@react-navigation/stack";
-
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import NetInfo, { useNetInfo } from "@react-native-community/netinfo";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import Screen from "./app/components/Screen";
-import AuthNavigator from "./app/navigation/AuthNavigator";
 import navigationTheme from "./app/navigation/navigationTheme";
 import AppNavigator from "./app/navigation/AppNavigator";
-
-const Link = () => {
-  const navigation = useNavigation();
-
-  return (
-    <Button
-      title="View Tweet"
-      onPress={() => navigation.navigate("TweetDetails", { id: "1" })}
-    />
-  );
-};
-
-const Tweets = () => (
-  <Screen>
-    <Text>Tweets</Text>
-    <Link />
-  </Screen>
-);
-
-const TweetDetails = ({ route }) => (
-  // If we are in child component we need to use useRoute()
-  <Screen>
-    <Text>Tweet Details {route.params.id}</Text>
-  </Screen>
-);
-
-const Account = () => (
-  <Screen>
-    <Text>Account</Text>
-  </Screen>
-);
+import { Text } from "react-native";
+import OfflineNotice from "./app/components/OfflineNotice";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -97,12 +66,39 @@ const TabNavigator = () => (
 
 export default function App() {
   return (
-    <NavigationContainer theme={navigationTheme}>
-      {/* <StackNavigator /> */}
-      {/* <TabNavigator /> */}
-
-      {/* <AuthNavigator /> */}
-      <AppNavigator />
-    </NavigationContainer>
+    <>
+      <OfflineNotice />
+      <NavigationContainer theme={navigationTheme}>
+        <AppNavigator />
+      </NavigationContainer>
+    </>
   );
 }
+
+{
+  /* <TabNavigator /> */
+  /* <StackNavigator /> */
+  /* <AuthNavigator /> */
+}
+
+// componentDidMount
+// const unsubscribe = NetInfo.addEventListener((netInfo) =>
+//   console.log(netInfo)
+// );
+// // componentWillMount
+// unsubscribe();
+
+// useNetInfo();
+
+// const demo = async () => {
+//     try {
+//       await AsyncStorage.setItem("person", JSON.stringify({ id: 1 }));
+//       const value = await AsyncStorage.getItem("person");
+//       const person = JSON.parse(value);
+//       console.log(person);
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   };
+//   demo();
+//   return <Text>Test</Text>;
