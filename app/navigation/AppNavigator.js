@@ -45,7 +45,7 @@ const AppNavigator = () => (
       })}
     />
     <Tab.Screen
-      name="AccountNavigator"
+      name="Account"
       component={AccountNavigator}
       options={{
         headerShown: false,
