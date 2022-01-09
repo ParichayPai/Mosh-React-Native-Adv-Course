@@ -12,6 +12,9 @@ import OfflineNotice from "./app/components/OfflineNotice";
 import AuthContext from "./app/auth/context";
 import authStorage from "./app/auth/storage";
 import navigate from "./app/navigation/rootNavigation";
+import logger from "./app/utility/logger";
+
+logger.start();
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -64,6 +67,8 @@ const TabNavigator = () => (
 );
 // In order for Tab navigator to access the tweet details page we put Stack Navigator as component to a screen
 // This is called Nesting Navigators
+
+// Privacy settings for publishing can be public, unlisted and maybe in future private
 
 export default function App() {
   const [user, setUser] = useState();
