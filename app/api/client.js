@@ -3,10 +3,10 @@ import authStorage from "../auth/storage";
 import cache from "../utility/cache";
 
 const apiClient = create({
-  baseURL: "http://192.168.29.108:9000/api",
+  baseURL: "http://192.168.29.109:9000/api", //IP address
 });
 
-apiClient.addAsyncResponseTransform(async (request) => {
+apiClient.addAsyncRequestTransform(async (request) => {
   const authToken = await authStorage.getToken();
   if (!authToken) {
     return;
